@@ -9,6 +9,10 @@ export const AppProvider = ({ children }) => {
     const [location, setLocation] = useState({
 
     })
+    const [page, setPage] = useState({
+        page: "", 
+        links: []
+    })
 
     const openSidebar = () => {
         setIsSidebarOpen(true);
@@ -19,6 +23,8 @@ export const AppProvider = ({ children }) => {
     }
 
     const openSubmenu = (text, coordinates) => {
+        const page = sublinks.find((link) => link.page === text);
+        setPage(page);
         setLocation(coordinates);
         setIsSubmenuOpen(true);
     }
@@ -30,12 +36,13 @@ export const AppProvider = ({ children }) => {
     return <AppContext.Provider value={{
         isSubmenuOpen,
         isSidebarOpen,
-        openSubmenu, 
-        openSidebar, 
-        closeSubmenu, 
+        openSubmenu,
+        openSidebar,
+        closeSubmenu,
         closeSidebar,
         location,
-        setLocation
+        setLocation,
+        page
     }}>
         {children}
     </AppContext.Provider>
