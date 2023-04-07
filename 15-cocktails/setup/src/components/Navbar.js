@@ -20,7 +20,6 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <h2>navbar component</h2>
     </nav>
   )
 }
